@@ -397,13 +397,10 @@ function call(e){
     })
     for(let i = 2; i <= content[e][1][0].length; i++){
         //copy
-        let now = document.querySelectorAll('.bar').length;
         let cocopy = copy.cloneNode(true);
-        cocopy.querySelector('input').value = 'バフ群' + now;
         document.getElementById('add').before(cocopy);
         //coopy
         let cocoopy = coopy.cloneNode(true);
-        cocoopy.querySelector('summary>span').innerHTML = 'バフ群' + now;
         document.getElementById('buff_box').append(cocoopy);
     };
     for(let i = 0; i < content[e][1][2].length; i++){
@@ -472,6 +469,9 @@ function call(e){
                 document.querySelectorAll('details')[i].querySelectorAll('.copy2')[a].querySelectorAll('.copy3 .num')[b - 1].value = decodeURIComponent(content[e][1][3][i][1][a][b]);
             };
         };
+    };
+    for(i = 0; i < document.querySelectorAll('.bar_name').length; i++){
+        document.querySelectorAll('summary>span:nth-of-type(2)')[i].innerHTML = document.querySelectorAll('.bar_name')[i].value;
     };
 };
 call(0);

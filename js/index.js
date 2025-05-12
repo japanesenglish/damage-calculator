@@ -2,7 +2,7 @@ window.addEventListener('load',function(){
     document.elementFromPoint(0,0).click();
 });
 window.addEventListener('click',function(e){
-    edit(e);
+    details(e);
     info(e);
     info_close();
     col(e);
@@ -19,19 +19,36 @@ window.addEventListener('DOMFocusOut',function(e){
 });
 
 //名称変更
-function edit(event){
-    if(event.target.classList.contains('buff_name')){
-        if(!event.target.classList.contains('black')){
-            event.target.value = '';
-            event.target.style.color = 'black';
-            event.target.classList.toggle('black');
-        };
-    };
-};
 function edit_ap(event){
     if(event.target.classList.contains('bar_name')){
         let ap_name = document.querySelectorAll('details')[Array.from(document.querySelectorAll('.bar_name')).indexOf(event.target)];
-        ap_name.querySelector('summary>span').innerHTML = event.target.value;
+        ap_name.querySelector('summary>span:nth-of-type(2)').innerHTML = event.target.value;
+    };
+};
+
+//details open
+function details(event){
+    if(event.target.closest('summary')){
+        event.preventDefault();
+        if(!event.target.closest('details').classList.contains('open') && !event.target.closest('details').classList.contains('moving')){
+            event.target.closest('details').classList.toggle('open');
+            event.target.closest('details').classList.toggle('moving');
+            event.target.closest('details').querySelector('div').style.height = event.target.closest('details').querySelector('div').scrollHeight + 'px';
+            setTimeout(() => {
+                event.target.closest('details').querySelector('div').style.height = 'auto';
+                event.target.closest('details').classList.toggle('moving');
+            }, 300);
+        } else if(event.target.closest('details').classList.contains('open') && !event.target.closest('details').classList.contains('moving')){
+            event.target.closest('details').querySelector('div').style.height = event.target.closest('details').querySelector('div').scrollHeight + 'px';
+            event.target.closest('details').classList.toggle('moving');
+            setTimeout(() => {
+                event.target.closest('details').classList.toggle('open');
+                event.target.closest('details').querySelector('div').style.height = '0px';
+                setTimeout(() => {
+                    event.target.closest('details').classList.toggle('moving');
+                }, 300);
+            }, 1);
+        };
     };
 };
 
@@ -423,7 +440,7 @@ document.querySelector('#add>div').addEventListener('click',function(){
     this.parentElement.before(cocopy);
     //coopy
     let cocoopy = coopy.cloneNode(true);
-    cocoopy.querySelector('summary>span').innerHTML = 'バフ群' + now;
+    cocoopy.querySelector('summary>span:nth-of-type(2)').innerHTML = 'バフ群' + now;
     document.getElementById('buff_box').append(cocoopy);
 });
 document.getElementById('graph_close').addEventListener('click',function(e){

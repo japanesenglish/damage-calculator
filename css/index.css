@@ -2,6 +2,7 @@
 
 body{
     background-color: rgb(255, 255, 255);
+    font-family: sans-serif;
     &>#top_box{
         display: flex;
         position: fixed;
@@ -14,6 +15,7 @@ body{
         border-bottom: rgb(150, 150, 150) solid 2px;
         z-index: 200;
         transition: all 0.3s;
+        user-select: none;
         &>div{
             position: relative;
             flex: 1;
@@ -288,7 +290,6 @@ body{
                         height: 100%;
                         width: 90%;
                         text-align: center;
-                        color: rgb(85, 85, 85);
                     }
                 }
                 &>div:nth-of-type(2){
@@ -624,21 +625,30 @@ body{
             border-radius: 3px;
             background-color: rgba(80, 80, 80, 0.2);
             user-select: none;
+            overflow: hidden;
             transition: all 0.3s;
             &>summary{
                 display: flex;
                 flex-wrap: wrap;
                 background-color: rgba(80, 80, 80, 0.4);
                 padding-bottom: 2px;
+                padding-left: 3px;
                 list-style: decimal;
                 &:hover{
                     cursor: pointer;
                 }
                 &>span:nth-of-type(1){
-                    flex: 1.2;
-                    padding-left: 10px;
+                    flex: 0;
+                    width: 10px;
+                    padding-left: 3px;
+                    transition: all 0.3s;
                 }
                 &>span:nth-of-type(2){
+                    flex: 1.2;
+                    font-weight: 500;
+                    padding-left: 2px;
+                }
+                &>span:nth-of-type(3){
                     display: flex;
                     flex-wrap: wrap;
                     margin-left: 5px;
@@ -652,181 +662,189 @@ body{
                         }
                     }
                 }
-                &>span:nth-of-type(3){
+                &>span:nth-of-type(4){
                     flex: 0.8;
                     text-align: right;
                     padding-right: 20px;
                 }
             }
-            &>div:nth-of-type(1){
-                margin-top: 15px;
+            &.open{
+                &>summary>span:nth-of-type(1){
+                    transform: rotate(90deg);
+                    transition: all 0.3s;
+                }
             }
-            &>.buffs{
-                display: flex;
-                position: relative;
-                flex-wrap: wrap;
-                padding: 0px 2px 2px 2px;
-                margin-bottom: 0px;
-                text-align: center;
-                &>.op{
+            &>div{
+                height: 0px;
+                transition: all 0.3s;
+                &>div:nth-of-type(1){
+                    height: 10px;
+                }
+                &>.buffs{
+                    display: flex;
                     position: relative;
-                    top: 3px;
-                    user-select: none;
-                    &>:hover{
-                        cursor: pointer;
+                    flex-wrap: wrap;
+                    padding: 0px 2px 2px 2px;
+                    margin-bottom: 0px;
+                    text-align: center;
+                    &>.op{
+                        position: relative;
+                        top: 3px;
+                        user-select: none;
+                        &>:hover{
+                            cursor: pointer;
+                        }
+                        &>.option{
+                            height: 20px;
+                            width: 20px;
+                            line-height: 20px;
+                            border: rgb(78, 78, 78) solid 1px;
+                            border-radius: 50%;
+                        }
                     }
-                    &>.option{
-                        height: 20px;
-                        width: 20px;
-                        line-height: 20px;
-                        border: rgb(78, 78, 78) solid 1px;
-                        border-radius: 50%;
+                    & .content{
+                        display: flex;
+                        flex: 1;
+                        border-radius: 6px;
+                        background-color: rgba(80, 80, 80, 0.3);
+                        margin: 0px 5px;
+                        padding-bottom: 3px;
+                        &>div:nth-of-type(1){
+                            display: inline-block;
+                            position: relative;
+                            flex: 2;
+                            &>input{
+                                width: 90%;
+                                text-align: center;
+                            }
+                        }
+                        &>div:nth-of-type(2){
+                            display: inline-block;
+                            flex: 2;
+                            &>input{
+                                width: 90%;
+                                text-align: right;
+                                border: none;
+                                border-bottom: black solid 1px;
+                            }
+                        }
+                        &>div:nth-of-type(3){
+                            display: flex;
+                            justify-content: flex-end;
+                            flex: 1.3;
+                            &>div{
+                                display: inline-block;
+                                flex: 1;
+                                text-align: right;
+                                overflow: auto;
+                            }
+                        }
+                    }
+                    & div:has(.option_del){
+                        position: relative;
+                        top: 3px;
+                        user-select: none;
+                        &>.option_del{
+                            height: 20px;
+                            width: 20px;
+                            line-height: 20px;
+                            border: red solid 1px;
+                            border-radius: 50%;
+                            color: red;
+                            font-weight: bold;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    &>.copy3{
+                        display: flex;
+                        width: 100%;
+                        margin-left: 27px;
+                        &:nth-of-type(6){
+                            margin-top: -3px;
+                        }
+                        &:nth-last-of-type(1){
+                            margin-bottom: 3px;
+                        }
+                        &>.content{
+                            margin-left: 0px;
+                        }
+                    }
+                    & .option_box{
+                        display: none;
+                        position: absolute;
+                        left: 29px;
+                        width: 140px;
+                        background-color: rgb(177, 246, 255);
+                        border: black solid 1px;
+                        border-radius: 5px;
+                        padding: 0px 5px;
+                        &>div{
+                            flex: 1;
+                            &:hover{
+                                cursor: pointer;
+                                border-bottom: black solid 1px;
+                            }
+                        }
+                    }
+                    & .option_del_box{
+                        display: none;
+                        position: absolute;
+                        right: 29px;
+                        width: 140px;
+                        background-color: rgb(255, 186, 186);
+                        border: black solid 1px;
+                        border-radius: 5px;
+                        padding: 0px 5px;
+                        &>div{
+                            flex: 1;
+                            &:hover{
+                                cursor: pointer;
+                                border-bottom: black solid 1px;
+                            }
+                        }
                     }
                 }
-                & .content{
-                    display: flex;
-                    flex: 1;
-                    border-radius: 6px;
-                    background-color: rgba(80, 80, 80, 0.3);
-                    margin: 0px 5px;
-                    padding-bottom: 3px;
+                &>.bor{
+                    display: none;
+                    width: 100%;
+                    border: black dashed 1px;
+                    margin: 10px 0px;
+                }
+                &>.add_buffs{
+                    position: relative;
+                    margin-bottom: 3px;
+                    text-align: center;
+                    user-select: none;
                     &>div:nth-of-type(1){
                         display: inline-block;
                         position: relative;
-                        flex: 2;
-                        &>input{
-                            width: 90%;
-                            text-align: center;
-                            color: rgb(85, 85, 85);
-                        }
-                    }
-                    &>div:nth-of-type(2){
-                        display: inline-block;
-                        flex: 2;
-                        &>input{
-                            width: 90%;
-                            text-align: right;
-                            border: none;
-                            border-bottom: black solid 1px;
-                        }
-                    }
-                    &>div:nth-of-type(3){
-                        display: flex;
-                        justify-content: flex-end;
-                        flex: 1.3;
-                        &>div{
-                            display: inline-block;
-                            flex: 1;
-                            text-align: right;
-                            overflow: auto;
-                        }
-                    }
-                }
-                & div:has(.option_del){
-                    position: relative;
-                    top: 3px;
-                    user-select: none;
-                    &>.option_del{
-                        height: 20px;
-                        width: 20px;
-                        line-height: 20px;
-                        border: red solid 1px;
+                        height: 25px;
+                        width: 25px;
+                        line-height: 25px;
+                        border: black solid 1px;
                         border-radius: 50%;
-                        color: red;
-                        font-weight: bold;
+                        z-index: 1;
                         &:hover{
                             cursor: pointer;
                         }
                     }
-                }
-                &>.copy3{
-                    display: flex;
-                    width: 100%;
-                    margin-left: 27px;
-                    &:nth-of-type(6){
-                        margin-top: -3px;
-                    }
-                    &:nth-last-of-type(1){
-                        margin-bottom: 3px;
-                    }
-                    &>.content{
-                        margin-left: 0px;
-                    }
-                }
-                & .option_box{
-                    display: none;
-                    position: absolute;
-                    left: 29px;
-                    width: 140px;
-                    background-color: rgb(177, 246, 255);
-                    border: black solid 1px;
-                    border-radius: 5px;
-                    padding: 0px 5px;
-                    &>div{
-                        flex: 1;
-                        &:hover{
-                            cursor: pointer;
-                            border-bottom: black solid 1px;
-                        }
-                    }
-                }
-                & .option_del_box{
-                    display: none;
-                    position: absolute;
-                    right: 29px;
-                    width: 140px;
-                    background-color: rgb(255, 186, 186);
-                    border: black solid 1px;
-                    border-radius: 5px;
-                    padding: 0px 5px;
-                    &>div{
-                        flex: 1;
-                        &:hover{
-                            cursor: pointer;
-                            border-bottom: black solid 1px;
-                        }
-                    }
-                }
-            }
-            &>.bor{
-                display: none;
-                width: 100%;
-                border: black dashed 1px;
-                margin: 10px 0px;
-            }
-            &>.add_buffs{
-                position: relative;
-                top: 0px;
-                margin-bottom: 3px;
-                text-align: center;
-                user-select: none;
-                &>div:nth-of-type(1){
-                    display: inline-block;
-                    position: relative;
-                    height: 25px;
-                    width: 25px;
-                    line-height: 25px;
-                    border: black solid 1px;
-                    border-radius: 50%;
-                    z-index: 1;
-                    &:hover{
-                        cursor: pointer;
-                    }
-                }
-                &>.add_buffs_box{
-                    display: none;
-                    position: absolute;
-                    top: 5px;
-                    left: 50%;
-                    transform: translate(-50%);
-                    width: 100%;
-                    &>div{
-                        position: relative;
-                        display: inline-block;
-                        margin: 0px 20px;
-                        &:hover{
-                            cursor: pointer;
-                            border-bottom: black solid 1px;
+                    &>.add_buffs_box{
+                        display: none;
+                        position: absolute;
+                        top: 5px;
+                        left: 50%;
+                        transform: translate(-50%);
+                        width: 100%;
+                        &>div{
+                            position: relative;
+                            display: inline-block;
+                            margin: 0px 20px;
+                            &:hover{
+                                cursor: pointer;
+                                border-bottom: black solid 1px;
+                            }
                         }
                     }
                 }
