@@ -145,6 +145,7 @@ let out_data = '';
 let ex_data = '';
 window.addEventListener('click',function(e){
     if(e.target.classList.contains('data')){
+        document.getElementById('baba').innerHTML = 'aaaa';
         document.getElementById('confirm').style.display = 'block';
         document.querySelectorAll('#confirm>div').forEach(function(dar){
             dar.style.display = '';
@@ -248,7 +249,6 @@ window.addEventListener('click',function(d){
         document.getElementById('bubu').innerHTML = document.cookie + ';:=' + cookie() + ';';
         document.getElementById('sin').style.top = '';
         document.cookie = ':=' + cookie() + '; max-age=31536000';
-        document.getElementById('baba').innerHTML = document.cookie + ';:=' + cookie() + ';';
         if(d.target == document.getElementById('save')){
             if((encodeURIComponent(d.target.parentElement.querySelector('input').value).length + cookie().length) < 4096){
                 let same = 0;
