@@ -489,6 +489,7 @@ body{
         background-color: rgb(212, 212, 212);
         text-align: center;
         z-index: 200;
+        user-select: none;
         &>#r_g_b{
             display: flex;
             width: 100%;

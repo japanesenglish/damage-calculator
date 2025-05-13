@@ -53,7 +53,6 @@ function details(event){
 };
 
 //bar詳細
-let info_open = 0;
 function info(event){
     if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
         event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
@@ -276,6 +275,10 @@ document.querySelectorAll('#r_g_b input').forEach(function(car){
         });
     });
 });
+//dont move
+document.getElementById('col_box').addEventListener('touchmove', function(evt){
+    evt.preventDefault();
+},{passive: false});
 //cursor drag
 cur_rb.addEventListener('pointermove',function(event){
     if(event.buttons == 1){
