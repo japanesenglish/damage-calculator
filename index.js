@@ -55,26 +55,31 @@ function details(event){
 //bar詳細
 let info_open = 0;
 function info(event){
-    if(event.target.classList.contains('info')){
+    if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
+        event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
+        event.target.parentElement.querySelector('.info_box').classList.toggle('open');
         event.target.parentElement.parentElement.style.zIndex = 102;
         event.target.parentElement.querySelector('.info_box').style.visibility = 'visible';
         event.target.parentElement.querySelector('.info_box').style.opacity = '1';
         setTimeout(() => {
-            info_open = 1;
-        }, 100);
+            event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
+        }, 300);
     };
 };
 function info_close(){
-    if(info_open == 1){
-        document.querySelectorAll('.info_box').forEach(function(car){
+    document.querySelectorAll('.info_box').forEach(function(car){
+        if(car.classList.contains('open') && !car.classList.contains('moving')){
+            car.classList.toggle('open');
+            car.classList.toggle('moving');
             car.parentElement.parentElement.style.zIndex = '';
             car.style.visibility = '';
             car.style.opacity = '';
-        });
-        setTimeout(() => {
-            info_open = 0;
-        }, 100);
-    };
+            setTimeout(() => {
+                car.style.display = '';
+                car.classList.toggle('moving');
+            }, 300);
+        };
+    });
 };
 
 //カラー変更
@@ -104,15 +109,13 @@ function col(event){
         document.getElementById('col_box').style.display = 'block';
         setTimeout(() => {
             col_box_open = 1;
-        }, 100);
+        }, 500);
     };
 };
 function col_close(event){
     if(event.target.closest('#col_box') === null && col_box_open == 1){
         document.getElementById('col_box').style.display = '';
-        setTimeout(() => {
-            col_box_open = 0;
-        }, 100);
+        col_box_open = 0;
     };
 };
 

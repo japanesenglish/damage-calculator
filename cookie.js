@@ -113,22 +113,26 @@ function bar(count,per,abs){
 //list
 document.querySelectorAll('#top_box>div>div:nth-of-type(1)').forEach(function(car){
     car.addEventListener('click',function(){
-        if(!car.parentElement.querySelector('div:nth-of-type(2)').classList.contains('open')){
+        if(!car.parentElement.querySelector('div:nth-of-type(2)').classList.contains('open') && !car.parentElement.querySelector('div:nth-of-type(2)').classList.contains('moving')){
+            car.parentElement.querySelector('div:nth-of-type(2)').classList.toggle('moving');
+            car.parentElement.querySelector('div:nth-of-type(2)').classList.toggle('open');
             car.parentElement.querySelector('div:nth-of-type(2)').style.display = 'block';
             car.parentElement.querySelector('div:nth-of-type(2)').style.height = car.parentElement.querySelector('div:nth-of-type(2)').scrollHeight + 'px';
             setTimeout(() => {
-                car.parentElement.querySelector('div:nth-of-type(2)').classList.toggle('open');
+                car.parentElement.querySelector('div:nth-of-type(2)').classList.toggle('moving');
             }, 300);
         };
     });
 });
 window.addEventListener('click',function(){
     document.querySelectorAll('#top_box>div>div:nth-of-type(2)').forEach(function(car){
-        if(car.classList.contains('open')){
+        if(car.classList.contains('open') && !car.classList.contains('moving')){
+            car.classList.toggle('open');
+            car.classList.toggle('moving');
             car.style.height = '';
             setTimeout(() => {
                 car.style.display = '';
-                car.classList.toggle('open');
+                car.classList.toggle('moving');
             }, 300);
         };
     });
