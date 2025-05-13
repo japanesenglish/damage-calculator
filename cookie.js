@@ -125,9 +125,9 @@ document.querySelectorAll('#top_box>div>div:nth-of-type(1)').forEach(function(ca
         };
     });
 });
-window.addEventListener('click',function(){
+window.addEventListener('click',function(e){
     document.querySelectorAll('#top_box>div>div:nth-of-type(2)').forEach(function(car){
-        if(car.classList.contains('open') && !car.classList.contains('moving')){
+        if(!e.target.classList.contains('data') && car.classList.contains('open') && !car.classList.contains('moving')){
             car.classList.toggle('open');
             car.classList.toggle('moving');
             car.style.height = '';
