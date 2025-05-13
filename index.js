@@ -1,6 +1,3 @@
-window.addEventListener('load',function(){
-    document.elementFromPoint(0,0).click();
-});
 window.addEventListener('click',function(e){
     details(e);
     info(e);

@@ -180,7 +180,10 @@ function shorten(event){
     };
 };
 
+calc();
 window.addEventListener('click',function(){
     calc();
 });
-
+window.addEventListener('change',function(){
+    calc();
+});
