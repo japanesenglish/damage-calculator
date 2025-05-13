@@ -3,7 +3,6 @@ let origin = cookie();
 let cookies = '';
 let cookieslist = [];
 let content = [];
-    document.getElementById('bubu').innerHTML = document.cookie;
 function sort(){
     //cookie保存
     console.log(document.cookie);
@@ -71,6 +70,7 @@ function sort(){
     list();
 };
 sort();
+    document.getElementById('bubu').innerHTML = document.cookie;
 
 console.log(content)
 //cookie適応
