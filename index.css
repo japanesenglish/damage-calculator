@@ -3,6 +3,7 @@
 body{
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
+    user-select: none;
     &>#top_box{
         display: flex;
         position: fixed;
@@ -15,7 +16,6 @@ body{
         border-bottom: rgb(150, 150, 150) solid 2px;
         z-index: 200;
         transition: all 0.3s;
-        user-select: none;
         &>div{
             position: relative;
             flex: 1;
@@ -261,7 +261,6 @@ body{
         padding-top: 35px;
         padding-bottom: 44px;
         z-index: 100;
-        user-select: none;
         transition: all 0.3s;
         &>div{
             &:nth-of-type(1){
@@ -451,7 +450,6 @@ body{
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
             background-color: rgba(80, 80, 80, 0.4);
-            user-select: none;
             text-align: center;
             &>span:nth-of-type(1){
                 flex: 1;
@@ -489,7 +487,6 @@ body{
         background-color: rgb(212, 212, 212);
         text-align: center;
         z-index: 200;
-        user-select: none;
         &>#r_g_b{
             display: flex;
             width: 100%;
@@ -626,7 +623,6 @@ body{
             border: rgb(80, 80, 80) solid 3px;
             border-radius: 3px;
             background-color: rgba(80, 80, 80, 0.2);
-            user-select: none;
             overflow: hidden;
             transition: all 0.3s;
             &>summary{
@@ -692,7 +688,6 @@ body{
                     &>.op{
                         position: relative;
                         top: 3px;
-                        user-select: none;
                         &>:hover{
                             cursor: pointer;
                         }
@@ -745,7 +740,6 @@ body{
                     & div:has(.option_del){
                         position: relative;
                         top: 3px;
-                        user-select: none;
                         &>.option_del{
                             height: 20px;
                             width: 20px;
@@ -818,7 +812,6 @@ body{
                     position: relative;
                     margin-bottom: 3px;
                     text-align: center;
-                    user-select: none;
                     &>div:nth-of-type(1){
                         display: inline-block;
                         position: relative;
