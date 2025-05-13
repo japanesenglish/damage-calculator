@@ -4,7 +4,7 @@ window.addEventListener('click',function(e){
 window.addEventListener('click',function(e){
     info(e);
 });
-window.addEventListener('click',function(e){
+window.addEventListener('click',function(){
     info_close();
 });
 window.addEventListener('click',function(e){
@@ -71,6 +71,7 @@ function details(event){
 
 //bar詳細
 function info(event){
+        document.getElementById('bubu').innerHTML = 'aiueo';
     if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
         document.getElementById('bubu').innerHTML = event.target.parentElement.querySelector('.info_box');
         event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
