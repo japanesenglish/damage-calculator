@@ -67,6 +67,7 @@ function sort(){
             };
         };
     };
+    list();
 };
 sort();
 
@@ -268,7 +269,6 @@ window.addEventListener('click',function(d){
                     };
                     document.getElementById('confirm').style.display = '';
                     sort();
-                    list();
                 } else {
                     window.alert('既に同じ名前のセットが存在しています。');
                 };
@@ -495,7 +495,6 @@ document.getElementById('out').addEventListener('click',function(){
     };
     document.getElementById('confirm').style.display = '';
     sort();
-    list();
 });
 function allout(){
     content.forEach(function(car){
