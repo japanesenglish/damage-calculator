@@ -277,7 +277,7 @@ document.querySelectorAll('#r_g_b input').forEach(function(car){
     });
 });
 //cursor drag
-cur_rb.onpointermove = function(event){
+cur_rb.addEventListener('pointermove',function(event){
     if(event.buttons == 1){
         event.preventDefault();
         if(drag_rb == ''){
@@ -333,7 +333,7 @@ cur_rb.onpointermove = function(event){
     } else {
         this.style.cursor = 'grab';
     };
-};
+},{passive: false});
 cur_tp.onpointermove = function(event) {
     if(event.buttons == 1){
         if(drag_tp == ''){
