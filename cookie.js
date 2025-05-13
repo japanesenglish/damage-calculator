@@ -1,3 +1,4 @@
+document.cookie = '=; max-age=0';
 let origin = cookie();
 console.log(origin)
 let cookies = '';
@@ -16,7 +17,6 @@ function sort(){
             i = Infinity;
         };
     };
-    document.cookie = '=' + cookie() + '; max-age=0';
     //Cookie仕分け
     content = [];
     for(let h = 0; h < cookieslist.length; h++){
