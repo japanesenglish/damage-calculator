@@ -54,8 +54,8 @@ function calc(){
     document.getElementById('total').innerHTML = atk.toLocaleString();
     let save_total = atk;
     document.querySelectorAll('.grow').forEach(function(car){
-        let save = car.parentElement.parentElement.querySelector('.num').value;
-        car.parentElement.parentElement.querySelector('.num').value = Number(car.parentElement.parentElement.querySelector('.num').value) + 1;
+        let save = car.closest('.content').querySelector('.num').value;
+        car.closest('.content').querySelector('.num').value = Number(car.closest('.content').querySelector('.num').value) + 1;
         atk = 0;
         base.querySelectorAll('.copy2').forEach(function(car){
             let buff = Number(car.querySelector('.num').value);
@@ -96,7 +96,7 @@ function calc(){
         } else {
             car.innerHTML = Math.round((atk - save_total) / save_total * 100000) / 1000;
         };
-        car.parentElement.parentElement.querySelector('.num').value = save;
+        car.closest('.content').querySelector('.num').value = save;
     });
     let biggest = 0;
     document.querySelectorAll('summary .abs').forEach(function(car){

@@ -52,10 +52,9 @@ function details(event){
 //bar詳細
 function info(event){
     if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
-        document.getElementById('bubu').innerHTML = event.target.parentElement.querySelector('.info_box');
         event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
         event.target.parentElement.querySelector('.info_box').classList.toggle('open');
-        event.target.parentElement.parentElement.style.zIndex = 102;
+        event.target.closest('.bar').style.zIndex = 102;
         event.target.parentElement.querySelector('.info_box').style.visibility = 'visible';
         event.target.parentElement.querySelector('.info_box').style.opacity = '1';
         setTimeout(() => {
@@ -68,7 +67,7 @@ function info_close(){
         if(car.classList.contains('open') && !car.classList.contains('moving')){
             car.classList.toggle('open');
             car.classList.toggle('moving');
-            car.parentElement.parentElement.style.zIndex = '';
+            car.closest('.bar').style.zIndex = '';
             car.style.visibility = '';
             car.style.opacity = '';
             setTimeout(() => {
@@ -476,36 +475,39 @@ function plus(event){
 function plus1(event){
     if(event.target.classList.contains('plus1')){
         let cocopy_plus1 = copy_plus1.cloneNode(true);
-        let now = event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length + 1;
+        let now = event.target.closest('details').querySelectorAll('.copy1').length + 1;
         cocopy_plus1.querySelector('.buff_name').value = 'バフ' + now;
-        event.target.parentElement.parentElement.parentElement.querySelector('.bor').before(cocopy_plus1);
-        cocopy_plus1.querySelector('.content').style.background = event.target.parentElement.parentElement.parentElement.querySelector('.content').style.background;
-        if(event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length >= 1){
-            event.target.parentElement.parentElement.parentElement.querySelector('.bor').style.display = 'block';
+        event.target.closest('details').querySelector('.bor').before(cocopy_plus1);
+        cocopy_plus1.querySelector('.content').style.background = event.target.closest('details').querySelector('.content').style.background;
+        if(event.target.closest('details').querySelectorAll('.copy2').length >= 1){
+            event.target.closest('details').querySelector('.bor').style.display = 'block';
         };
-        bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.parentElement.parentElement.parentElement),event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length,event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length);
+        bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.closest('.buff_copy')),event.target.closest('details').querySelectorAll('.copy1').length,event.target.closest('details').querySelectorAll('.copy2').length);
     };
 };
 function plus2(event){
     if(event.target.classList.contains('plus2')){
-        if(event.target.parentElement.parentElement.parentElement.querySelector('.bor') !== null && event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length >= 1){
-            event.target.parentElement.parentElement.parentElement.querySelector('.bor').style.display = 'block';
+        if(event.target.closest('details').querySelector('.bor') !== null && event.target.closest('details').querySelectorAll('.copy1').length >= 1){
+            event.target.closest('details').querySelector('.bor').style.display = 'block';
         };
         let cocopy_plus2 = copy_plus2.cloneNode(true);
-        let now = event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length + 1;
+        let now = event.target.closest('details').querySelectorAll('.copy2').length + 1;
         cocopy_plus2.querySelector('.buff_name').value = 'バフ' + now;
-        event.target.parentElement.parentElement.parentElement.querySelector('.add_buffs').before(cocopy_plus2);
+        event.target.closest('details').querySelector('.add_buffs').before(cocopy_plus2);
         cocopy_plus2.querySelectorAll('.content').forEach(function(car){
-            car.style.background = event.target.parentElement.parentElement.parentElement.querySelector('.content').style.background;
+            car.style.background = event.target.closest('details').querySelector('.content').style.background;
         });
-        bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.parentElement.parentElement.parentElement),event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length,event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length);
+        bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.closest('.buff_copy')),event.target.closest('details').querySelectorAll('.copy1').length,event.target.closest('details').querySelectorAll('.copy2').length);
     };
 };
 
 function option(event){
     if(event.target.classList.contains('option')){
         let cocopy_op = copy_op.cloneNode(true);
-        event.target.parentElement.parentElement.append(cocopy_op);
+        cocopy_op.querySelectorAll('.content').forEach(function(car){
+            car.style.background = event.target.closest('details').querySelector('.content').style.background;
+        });
+        event.target.closest('.buffs').append(cocopy_op);
     };
 };
 
@@ -514,19 +516,19 @@ function del(event){
     if(event.target.classList.contains('del')){
         let del_element = document.querySelectorAll('.buff_copy')[Array.from(document.querySelectorAll('.del')).indexOf(event.target)];
         del_element.remove();
-        del_element = event.target.parentElement.parentElement.parentElement.parentElement;
+        del_element = event.target.closest('.bar_copy');
         del_element.remove();
     };
 };
 
 function option_del(event){
     if(event.target.classList.contains('option_del')){
-        if(event.target.parentElement.parentElement.parentElement.querySelector('.bor') !== null && event.target.parentElement.parentElement.classList.contains('copy2') && event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length == 1){
-            event.target.parentElement.parentElement.parentElement.querySelector('.bor').style.display = '';
-            bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.parentElement.parentElement.parentElement),event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length,event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length - 1);
-        } else if (event.target.parentElement.parentElement.classList.contains('copy1') && event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length == 1){
-            event.target.parentElement.parentElement.parentElement.querySelector('.bor').style.display = '';
-            bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.parentElement.parentElement.parentElement),event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy1').length - 1,event.target.parentElement.parentElement.parentElement.querySelectorAll('.copy2').length);
+        if(event.target.closest('.buff_copy') && event.target.closest('.copy2') && event.target.closest('.buffs').parentElement.querySelectorAll('.copy2').length == 1 && !event.target.closest('.copy3')){
+            event.target.closest('.buff_copy').querySelector('.bor').style.display = '';
+            bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.closest('.buff_copy')),event.target.closest('.buffs').parentElement.querySelectorAll('.copy1').length,event.target.closest('.buffs').parentElement.querySelectorAll('.copy2').length - 1);
+        } else if (event.target.closest('.copy1') && event.target.closest('.buffs').parentElement.querySelectorAll('.copy1').length == 1 && !event.target.closest('.copy3')){
+            event.target.closest('.buff_copy').querySelector('.bor').style.display = '';
+            bar(Array.from(document.querySelectorAll('.buff_copy')).indexOf(event.target.closest('.buff_copy')),event.target.closest('.buffs').parentElement.querySelectorAll('.copy1').length - 1,event.target.closest('.buffs').parentElement.querySelectorAll('.copy2').length);
         };
         event.target.parentElement.parentElement.remove();
     };

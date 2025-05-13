@@ -145,7 +145,6 @@ let out_data = '';
 let ex_data = '';
 document.addEventListener('click',function(e){
     if(e.target.classList.contains('data')){
-        document.getElementById('baba').innerHTML = 'aaaa';
         document.getElementById('confirm').style.display = 'block';
         document.querySelectorAll('#confirm>div').forEach(function(dar){
             dar.style.display = '';
@@ -246,7 +245,6 @@ document.addEventListener('click',function(d){
             }, 2000);
         };
     } else {
-        document.getElementById('bubu').innerHTML = document.cookie + ';:=' + cookie() + ';';
         document.getElementById('sin').style.top = '';
         document.cookie = ':=' + cookie() + '; max-age=31536000';
         if(d.target == document.getElementById('save')){
@@ -325,7 +323,7 @@ function cookie(){
         cookie_text = cookie_text + '/';
         car.querySelectorAll('.copy1 .main').forEach(function(dar){
             cookie_text = cookie_text + encodeURIComponent(dar.value);
-            dar.parentElement.parentElement.parentElement.querySelectorAll('.cri').forEach(function(ear){
+            dar.closest('.buffs').querySelectorAll('.cri').forEach(function(ear){
                 cookie_text = cookie_text + '#';
                 cookie_text = cookie_text + encodeURIComponent(ear.value);
             });
@@ -338,7 +336,7 @@ function cookie(){
         car.querySelectorAll('.copy2 .main').forEach(function(dar){
             cookie_text = cookie_text + '@';
             cookie_text = cookie_text + encodeURIComponent(dar.value);
-            dar.parentElement.parentElement.parentElement.querySelectorAll('.cri').forEach(function(ear){
+            dar.closest('.buffs').querySelectorAll('.cri').forEach(function(ear){
                 cookie_text = cookie_text + '#';
                 cookie_text = cookie_text + encodeURIComponent(ear.value);
             });
@@ -358,7 +356,7 @@ function cookie(){
         cookie_text = cookie_text + '/';
         car.querySelectorAll('.copy1 .content:has(.main) .num').forEach(function(dar){
             cookie_text = cookie_text + encodeURIComponent(dar.value);
-            dar.parentElement.parentElement.parentElement.querySelectorAll('.content:has(.cri) .num').forEach(function(ear){
+            dar.closest('.buffs').querySelectorAll('.content:has(.cri) .num').forEach(function(ear){
                 cookie_text = cookie_text + '#';
                 cookie_text = cookie_text + encodeURIComponent(ear.value);
             });
@@ -371,7 +369,7 @@ function cookie(){
         car.querySelectorAll('.copy2 .content:has(.main) .num').forEach(function(dar){
             cookie_text = cookie_text + '@';
             cookie_text = cookie_text + encodeURIComponent(dar.value);
-            dar.parentElement.parentElement.parentElement.querySelectorAll('.content:has(.cri) .num').forEach(function(ear){
+            dar.closest('.buffs').querySelectorAll('.content:has(.cri) .num').forEach(function(ear){
                 cookie_text = cookie_text + '#';
                 cookie_text = cookie_text + encodeURIComponent(ear.value);
             });
