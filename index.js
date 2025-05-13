@@ -1,37 +1,17 @@
-window.addEventListener('click',function(e){
+document.addEventListener('click',function(e){
     details(e);
-});
-window.addEventListener('click',function(e){
     info(e);
-});
-window.addEventListener('click',function(){
     info_close();
-});
-window.addEventListener('click',function(e){
     col(e);
-});
-window.addEventListener('click',function(e){
     col_close(e);
-});
-window.addEventListener('click',function(e){
     del(e);
-});
-window.addEventListener('click',function(e){
     plus(e);
-});
-window.addEventListener('click',function(e){
     plus1(e);
-});
-window.addEventListener('click',function(e){
     plus2(e);
-});
-window.addEventListener('click',function(e){
     option(e);
-});
-window.addEventListener('click',function(e){
     option_del(e);
 });
-window.addEventListener('DOMFocusOut',function(e){
+document.addEventListener('DOMFocusOut',function(e){
     edit_ap(e);
 });
 
@@ -71,7 +51,6 @@ function details(event){
 
 //bar詳細
 function info(event){
-        document.getElementById('bubu').innerHTML = 'aiueo';
     if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
         document.getElementById('bubu').innerHTML = event.target.parentElement.querySelector('.info_box');
         event.target.parentElement.querySelector('.info_box').classList.toggle('moving');

@@ -125,7 +125,7 @@ document.querySelectorAll('#top_box>div>div:nth-of-type(1)').forEach(function(ca
         };
     });
 });
-window.addEventListener('click',function(e){
+document.addEventListener('click',function(e){
     document.querySelectorAll('#top_box>div>div:nth-of-type(2)').forEach(function(car){
         if(!e.target.classList.contains('data') && car.classList.contains('open') && !car.classList.contains('moving')){
             car.classList.toggle('open');
@@ -143,7 +143,7 @@ let save_data = '';
 let call_data = '';
 let out_data = '';
 let ex_data = '';
-window.addEventListener('click',function(e){
+document.addEventListener('click',function(e){
     if(e.target.classList.contains('data')){
         document.getElementById('baba').innerHTML = 'aaaa';
         document.getElementById('confirm').style.display = 'block';
@@ -225,7 +225,7 @@ function list(){
 list();
 
 //save
-window.addEventListener('click',function(d){
+document.addEventListener('click',function(d){
     if(cookie().length >= 4095){
         console.log(cookie().length)
         document.getElementById('sin').style.top = '2px';

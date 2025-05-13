@@ -181,9 +181,9 @@ function shorten(event){
 };
 
 calc();
-window.addEventListener('click',function(){
+document.addEventListener('click',function(){
     calc();
 });
-window.addEventListener('change',function(){
+document.addEventListener('change',function(){
     calc();
 });
