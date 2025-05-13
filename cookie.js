@@ -196,6 +196,7 @@ function list(){
     for(i = 1; i < count; i++){
         document.querySelector('#ex_box>div:nth-of-type(2)>div').remove();
     };
+    document.getElementById('bubu').innerHTML = document.cookie;
     for(let i = 1; i < content.length; i++){
         let add_content = document.createElement('div');
         add_content.innerHTML = content[i][0];
