@@ -8,12 +8,12 @@ function sort(){
     console.log(document.cookie);
     cookies = document.cookie;
     if(cookies == ''){
-        cookies = ',=' + cookie();
+        cookies = ':=' + cookie();
     };
     if((cookies.match(/;/g) || []).length >= 1){
         cookieslist = cookies.split(';');
         for(i = 0; i < cookieslist.length; i++){
-            if(cookieslist[i].split('=')[0].trim() === ','){
+            if(cookieslist[i].split('=')[0].trim() === ':'){
                 let con = cookieslist[i]
                 cookieslist.splice(i,1);
                 cookieslist.unshift(con);
@@ -245,10 +245,10 @@ window.addEventListener('click',function(d){
             }, 2000);
         };
     } else {
-        document.getElementById('bubu').innerHTML = document.cookie + ';,=' + cookie() + ';';
+        document.getElementById('bubu').innerHTML = document.cookie + ';:=' + cookie() + ';';
         document.getElementById('sin').style.top = '';
-        document.cookie = ',=' + cookie() + '; max-age=31536000';
-        document.getElementById('baba').innerHTML = document.cookie + ';,=' + cookie() + ';';
+        document.cookie = ':=' + cookie() + '; max-age=31536000';
+        document.getElementById('baba').innerHTML = document.cookie + ';:=' + cookie() + ';';
         if(d.target == document.getElementById('save')){
             if((encodeURIComponent(d.target.parentElement.querySelector('input').value).length + cookie().length) < 4096){
                 let same = 0;
@@ -392,7 +392,7 @@ function cookie(){
 document.getElementById('call').addEventListener('click',function(){
     if(call_data.classList.contains('new')){
         console.log(origin)
-        document.cookie = ',=' + origin + '; max-age=31536000';
+        document.cookie = ':=' + origin + '; max-age=31536000';
         sort();
         call(0);
     } else {
@@ -502,7 +502,7 @@ function allout(){
     content.forEach(function(car){
         document.cookie = encodeURIComponent(car[0]) + '=' + cookie() + '; max-age=0';
     });
-    document.cookie = ',=' + cookie() + '; max-age=0';
+    document.cookie = ':=' + cookie() + '; max-age=0';
 };
 
 //export
@@ -562,7 +562,7 @@ document.getElementById('file').addEventListener('change',function(event){
 document.getElementById('in').addEventListener('click',function(){
     if(key == 'yes'){
         console.log(key_content)
-        document.cookie = ',=' + key_content + '; max-age=31536000';
+        document.cookie = ':=' + key_content + '; max-age=31536000';
         sort();
         call(0);
         document.getElementById('confirm').style.display = '';
