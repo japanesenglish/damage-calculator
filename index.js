@@ -276,13 +276,14 @@ document.querySelectorAll('#r_g_b input').forEach(function(car){
 //cursor drag
 cur_rb.onpointermove = function(event){
     if(event.buttons == 1){
+        event.preventDefault();
         if(drag_rb == ''){
             let top = this.offsetTop;
             this.style.margin = '0px 0px 0px -6px';
             this.style.top = top + 'px';
         };
         drag_rb = 1;
-        this.style.top = Math.max(-9, Math.min(this.offsetTop + event.movementY, 268 - this.offsetHeight)) + 'px';
+        this.style.top = Math.max(-9, Math.min(this.offsetTop + event.movementY, 267 - this.offsetHeight)) + 'px';
         this.style.cursor = 'grabbing';
         this.draggable = false;
         this.setPointerCapture(event.pointerId);
@@ -338,7 +339,7 @@ cur_tp.onpointermove = function(event) {
             this.style.top = top + 'px';
         };
         drag_tp = 1;
-        this.style.top = Math.max(-9, Math.min(this.offsetTop + event.movementY, 268 - this.offsetHeight)) + 'px';
+        this.style.top = Math.max(-9, Math.min(this.offsetTop + event.movementY, 267 - this.offsetHeight)) + 'px';
         this.style.cursor = 'grabbing';
         this.draggable = false;
         this.setPointerCapture(event.pointerId);
