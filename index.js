@@ -55,6 +55,7 @@ function details(event){
 //bar詳細
 function info(event){
     if(event.target.classList.contains('info') && !event.target.parentElement.querySelector('.info_box').classList.contains('open') && !event.target.parentElement.querySelector('.info_box').classList.contains('moving')){
+        document.getElementById('bubu').innerHTML = event.target.parentElement.querySelector('.info_box');
         event.target.parentElement.querySelector('.info_box').classList.toggle('moving');
         event.target.parentElement.querySelector('.info_box').classList.toggle('open');
         event.target.parentElement.parentElement.style.zIndex = 102;
