@@ -248,6 +248,7 @@ window.addEventListener('click',function(d){
         document.getElementById('bubu').innerHTML = document.cookie + ';,=' + cookie() + ';';
         document.getElementById('sin').style.top = '';
         document.cookie = ',=' + cookie() + '; max-age=31536000';
+        document.getElementById('baba').innerHTML = document.cookie + ';,=' + cookie() + ';';
         if(d.target == document.getElementById('save')){
             if((encodeURIComponent(d.target.parentElement.querySelector('input').value).length + cookie().length) < 4096){
                 let same = 0;
