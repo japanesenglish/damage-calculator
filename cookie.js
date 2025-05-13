@@ -70,7 +70,6 @@ function sort(){
     list();
 };
 sort();
-    document.getElementById('bubu').innerHTML = document.cookie;
 
 console.log(content)
 //cookie適応
@@ -246,6 +245,7 @@ window.addEventListener('click',function(d){
             }, 2000);
         };
     } else {
+        document.getElementById('bubu').innerHTML = document.cookie + ';,=' + cookie() + ';';
         document.getElementById('sin').style.top = '';
         document.cookie = ',=' + cookie() + '; max-age=31536000';
         if(d.target == document.getElementById('save')){

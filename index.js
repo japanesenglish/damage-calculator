@@ -280,7 +280,6 @@ document.getElementById('col_box').addEventListener('touchmove', function(evt){
 //cursor drag
 cur_rb.addEventListener('pointermove',function(event){
     if(event.buttons == 1){
-        event.preventDefault();
         if(drag_rb == ''){
             let top = this.offsetTop;
             this.style.margin = '0px 0px 0px -6px';
@@ -334,7 +333,7 @@ cur_rb.addEventListener('pointermove',function(event){
     } else {
         this.style.cursor = 'grab';
     };
-},{passive: false});
+});
 cur_tp.onpointermove = function(event) {
     if(event.buttons == 1){
         if(drag_tp == ''){
