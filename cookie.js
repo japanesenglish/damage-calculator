@@ -1,21 +1,27 @@
 document.cookie = '=; max-age=0';
 let origin = cookie();
-console.log(origin)
 let cookies = '';
 let cookieslist = [];
 let content = [];
 function sort(){
     //cookie保存
+    console.log(document.cookie);
     cookies = document.cookie;
-    console.log(cookies);
-    cookieslist = cookies.split(';');
-    for(i = 0; i < cookieslist.length; i++){
-        if(cookieslist[i].split('=')[0].trim() === ','){
-            let con = cookieslist[i]
-            cookieslist.splice(i,1);
-            cookieslist.unshift(con);
-            i = Infinity;
+    if(cookies == ''){
+        cookies = ',=' + cookie();
+    };
+    if((cookies.match(/;/g) || []).length >= 1){
+        cookieslist = cookies.split(';');
+        for(i = 0; i < cookieslist.length; i++){
+            if(cookieslist[i].split('=')[0].trim() === ','){
+                let con = cookieslist[i]
+                cookieslist.splice(i,1);
+                cookieslist.unshift(con);
+                i = Infinity;
+            };
         };
+    } else {
+        cookieslist = [cookies];
     };
     //Cookie仕分け
     content = [];
@@ -235,7 +241,7 @@ window.addEventListener('click',function(d){
         };
     } else {
         document.getElementById('sin').style.top = '';
-        document.cookie = ',' + '=' + cookie() + '; max-age=31536000';
+        document.cookie = ',=' + cookie() + '; max-age=31536000';
         if(d.target == document.getElementById('save')){
             if((encodeURIComponent(d.target.parentElement.querySelector('input').value).length + cookie().length) < 4096){
                 let same = 0;
@@ -380,7 +386,7 @@ function cookie(){
 document.getElementById('call').addEventListener('click',function(){
     if(call_data.classList.contains('new')){
         console.log(origin)
-        document.cookie = ',' + '=' + origin + '; max-age=31536000';
+        document.cookie = ',=' + origin + '; max-age=31536000';
         sort();
         call(0);
     } else {
@@ -491,7 +497,7 @@ function allout(){
     content.forEach(function(car){
         document.cookie = encodeURIComponent(car[0]) + '=' + cookie() + '; max-age=0';
     });
-    document.cookie = ',' + '=' + cookie() + '; max-age=0';
+    document.cookie = ',=' + cookie() + '; max-age=0';
 };
 
 //export
