@@ -1,7 +1,6 @@
 window.addEventListener('click',function(e){
     details(e);
     info(e);
-    info_close();
     col(e);
     col_close(e);
     del(e);
