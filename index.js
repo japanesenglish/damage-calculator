@@ -11,7 +11,7 @@ document.addEventListener('click',function(e){
     option(e);
     option_del(e);
 });
-document.addEventListener('DOMFocusOut',function(e){
+document.addEventListener('change',function(e){
     edit_ap(e);
 });
 
